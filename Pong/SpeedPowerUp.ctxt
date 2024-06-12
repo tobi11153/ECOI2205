@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=SpeedPowerUp
+comment1.params=
+comment1.target=SpeedPowerUp()
+comment2.params=ball
+comment2.target=void\ applyEffect(Ball)
+numComments=3

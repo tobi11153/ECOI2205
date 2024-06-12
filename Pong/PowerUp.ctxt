@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=PowerUp
+comment1.params=imageFile
+comment1.target=PowerUp(java.lang.String)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=ball
+comment3.target=void\ applyEffect(Ball)
+numComments=4

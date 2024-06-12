@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Menu
+comment1.params=isPaused
+comment1.target=Menu(boolean)
+comment2.params=world
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=void\ removeButtons()
+numComments=4
