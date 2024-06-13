@@ -9,7 +9,7 @@ public class ColorButton extends Actor
     {
         this.color = color;
         this.target = target;
-        GreenfootImage image = new GreenfootImage(50, 50);
+        GreenfootImage image = new GreenfootImage(25, 25);
         image.setColor(color);
         image.fill();
         setImage(image);

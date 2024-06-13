@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=BackgroundButton
+comment1.params=imagem
+comment1.target=BackgroundButton(java.lang.String)
+comment2.params=
+comment2.target=void\ act()
+numComments=3

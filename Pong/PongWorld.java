@@ -168,5 +168,12 @@ public class PongWorld extends World
         menu = new Menu(isGameStarted);
         addObject(menu, getWidth() / 2, getHeight() / 2);
     }
+    
+        public void setBackgroundImage(String imageFile)
+    {
+        GreenfootImage bg = new GreenfootImage(imageFile);
+        bg.scale(getWidth(), getHeight());
+        setBackground(bg);
+    }
 }
 
