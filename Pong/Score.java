@@ -10,11 +10,14 @@ public class Score extends Actor
 {
     private int score = 0;
     private int size;
+    private int sets = 0;
+    private boolean left;
     
-    public Score(int size)
+    public Score(int size , boolean left)
     {
         this.score = 0;
         this.size = size;
+        this.left = left;
     }
     
     /**
@@ -29,11 +32,26 @@ public class Score extends Actor
     
     public void add()
     {
-        this.score = this.score + 1;
+         this.score++;
+        if (score >= 3) {
+            addSet();
+            this.score = 0; // Reset points after earning a set
+        }
+        update();
+    }
+
+    private void addSet()
+    {
+        sets++;
     }
     
     public void update()
     {
-        setImage(new GreenfootImage(""+this.score, this.size, Color.WHITE, Color.BLACK));
+        if(left){
+        setImage(new GreenfootImage("" + sets + " : " + score, size, Color.WHITE, Color.BLACK));
+    }else{
+            setImage(new GreenfootImage("" + score + " : " + sets, size, Color.WHITE, Color.BLACK));
+
+    }
     }
 }

@@ -11,6 +11,6 @@ public class SpeedPowerUp extends PowerUp
     @Override
     protected void applyEffect(Ball ball)
     {
-        ball.doublexSpeed();
+        ball.doubleSpeed();
     }
 }

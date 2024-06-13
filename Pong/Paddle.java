@@ -45,7 +45,7 @@ public class Paddle extends Actor
     
        public void increaseSize()
     {
-        height += 20;
+        height *= 2 ;
         updateImage();
     }
 
@@ -64,5 +64,12 @@ public class Paddle extends Actor
     }
     public boolean getSide(){
         return this.isLeft;
+    }
+    
+        public void setColor(Color color)
+    {
+        GreenfootImage image = getImage();
+        image.setColor(color);
+        image.fill();
     }
 }

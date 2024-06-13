@@ -11,6 +11,8 @@ public class PongWorld extends World
     private Menu menu;
     private PauseButton pauseButton;
     private int powerupcount = 0;
+    private SettingsMenu settingsMenu;
+
 
 
     public PongWorld()
@@ -127,7 +129,7 @@ public class PongWorld extends World
     public void act()
     {
         if (isGameStarted) {
-            if (Greenfoot.getRandomNumber(1000) < 5000) //probabilidade de aparecer powerup
+            if (Greenfoot.getRandomNumber(1000) < 5) //probabilidade de aparecer powerup
             {
                 addPowerUp();
             }
@@ -136,6 +138,35 @@ public class PongWorld extends World
     
     public void decreasepower(){
         powerupcount = powerupcount - 1;
+    }
+        public void setBallColor(Color color)
+    {
+        ball.setColor(color);
+    }
+
+    public void setLeftPaddleColor(Color color)
+    {
+        leftPaddle.setColor(color);
+    }
+
+    public void setRightPaddleColor(Color color)
+    {
+        rightPaddle.setColor(color);
+    }
+    
+        public void openSettings()
+    {
+        settingsMenu = new SettingsMenu();
+        addObject(settingsMenu, getWidth() / 2, getHeight() / 2);
+        menu.removeButtons();
+        removeObject(menu);
+    }
+    
+        public void closeSettings()
+    {
+        removeObject(settingsMenu);
+        menu = new Menu(isGameStarted);
+        addObject(menu, getWidth() / 2, getHeight() / 2);
     }
 }
 

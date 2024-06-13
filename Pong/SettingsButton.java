@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-//menu para mecher nas configurações
+// Button to open the settings menu
 public class SettingsButton extends Actor
 {
     public SettingsButton()
@@ -14,12 +14,13 @@ public class SettingsButton extends Actor
         image.drawString("Settings", 20, 30);
         setImage(image);
     }
-        public void act()
+
+    public void act()
     {
         if (Greenfoot.mouseClicked(this))
         {
-            // Open settings menu or perform settings-related actions
-            System.out.println("Settings clicked");
+            PongWorld world = (PongWorld) getWorld();
+            world.openSettings();
         }
     }
 }

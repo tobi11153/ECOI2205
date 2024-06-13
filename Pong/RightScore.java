@@ -10,7 +10,7 @@ public class RightScore extends Score
 {
     public RightScore()
     {
-        super(48);
+        super(48, false);
     }
     /**
      * Act - do whatever the RightScore wants to do. This method is called whenever

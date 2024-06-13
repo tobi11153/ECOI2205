@@ -10,7 +10,7 @@ public class LeftScore extends Score
 {
     public LeftScore() 
     {
-        super(48);
+        super(48, true);
     }
     /**
      * Act - do whatever the LeftScore wants to do. This method is called whenever

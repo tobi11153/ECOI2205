@@ -17,4 +17,6 @@ comment7.params=
 comment7.target=void\ updateImage()
 comment8.params=
 comment8.target=boolean\ getSide()
-numComments=9
+comment9.params=color
+comment9.target=void\ setColor(greenfoot.Color)
+numComments=10

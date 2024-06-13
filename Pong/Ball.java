@@ -7,7 +7,7 @@ public class Ball extends Actor
     private int batidas = 0;
     private boolean powered = false;
     private long powerUpStartTime;
-    private static final int POWER_UP_DURATION = 3000; // 3 seconds in milliseconds
+    private static final int POWER_UP_DURATION = 3000; // 3 segundos
     private Paddle lastHitPaddle;
 
     /* 
@@ -15,10 +15,7 @@ public class Ball extends Actor
      */
     public Ball()
     {
-        GreenfootImage image = new GreenfootImage(32, 32);
-        image.setColor(Color.GREEN);
-        image.fillOval(0, 0, 32, 32);
-        setImage(image);
+        setColor(Color.GREEN);
     }
 
     public void act()
@@ -75,7 +72,7 @@ public class Ball extends Actor
             
             //Aumenta a velocidade a cada x batidas
             batidas = batidas + 1;
-            if(batidas >= 3){
+            if(batidas < 3){
               xSpeed =  xSpeed < 0 ? xSpeed - 1 : xSpeed + 1;
                batidas = 0;
             }
@@ -90,9 +87,10 @@ public class Ball extends Actor
         powered = false;
     }
     
-    public void doublexSpeed(){
+    public void doubleSpeed(){
         if (!powered) {
             xSpeed *= 2;
+            ySpeed *= 2;
             powered = true;
             powerUpStartTime = System.currentTimeMillis();
         }
@@ -102,6 +100,7 @@ public class Ball extends Actor
     {
         if (powered && (System.currentTimeMillis() - powerUpStartTime >= POWER_UP_DURATION)) {
             xSpeed /= 2;
+            ySpeed /= 2;
             powered = false;
         }
     }
@@ -114,6 +113,13 @@ public class Ball extends Actor
     {
         return lastHitPaddle;
     }
-
+    
+    public void setColor(Color color)
+    {
+        GreenfootImage image = new GreenfootImage(32, 32);
+        image.setColor(color);
+        image.fillOval(0, 0, 32, 32);
+        setImage(image);
+    }
   
 }
