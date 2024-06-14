@@ -18,6 +18,7 @@ public class Score extends Actor
         this.score = 0;
         this.size = size;
         this.left = left;
+        this.sets = 0;
     }
     
     /**
@@ -37,6 +38,7 @@ public class Score extends Actor
             addSet();
             this.score = 0; // Reset points after earning a set
         }
+
         update();
     }
 
@@ -53,5 +55,9 @@ public class Score extends Actor
             setImage(new GreenfootImage("" + score + " : " + sets, size, Color.WHITE, Color.BLACK));
 
     }
+    }
+    
+    public int getSets(){
+        return this.sets;
     }
 }

@@ -10,6 +10,9 @@ public class Paddle extends Actor
 {
     private boolean isLeft;
     private int height = 100;
+    private double velocity = 0; // Current velocity of the paddle
+    private double acceleration = 0.5; // How fast the paddle accelerates
+    private double maxSpeed = 4; // Maximum speed of the paddle
 
     public Paddle(boolean isLeft)
     {
@@ -19,31 +22,44 @@ public class Paddle extends Actor
 
     public void act()
     {
-        // Movement for left paddle
+        // Desired speed based on input
+        double desiredSpeed = 0;
+
         if (isLeft)
         {
-            if (Greenfoot.isKeyDown("w")) moveUp();
-            if (Greenfoot.isKeyDown("s")) moveDown();
+            if (Greenfoot.isKeyDown("w")) desiredSpeed = -maxSpeed;
+            if (Greenfoot.isKeyDown("s")) desiredSpeed = maxSpeed;
         }
-        // Movement for right paddle
         else
         {
-            if (Greenfoot.isKeyDown("up")) moveUp();
-            if (Greenfoot.isKeyDown("down")) moveDown();
+            if (Greenfoot.isKeyDown("up")) desiredSpeed = -maxSpeed;
+            if (Greenfoot.isKeyDown("down")) desiredSpeed = maxSpeed;
+        }
+
+        // Smoothly adjust the velocity towards the desired speed
+        velocity += (desiredSpeed - velocity) * acceleration;
+
+        // Move the paddle based on the current velocity
+        if (getY() + velocity > 30 && getY() + velocity < getWorld().getHeight() - 30)
+        {
+            setLocation(getX(), (int)(getY() + velocity));
         }
     }
-    
-    private void moveUp()
+
+    private void updateImage()
     {
-        if (getY() > 30) setLocation(getX(), getY() - 4);
+        GreenfootImage image = new GreenfootImage(10, height);
+        image.setColor(Color.WHITE);
+        image.fill();
+        setImage(image);
     }
 
-    private void moveDown()
+    public boolean getSide()
     {
-        if (getY() < getWorld().getHeight() - 30) setLocation(getX(), getY() + 4);
+        return this.isLeft;
     }
-    
-       public void increaseSize()
+
+    public void increaseSize()
     {
         height *= 2 ;
         updateImage();
@@ -55,18 +71,7 @@ public class Paddle extends Actor
         updateImage();
     }
 
-    private void updateImage()
-    {
-        GreenfootImage image = new GreenfootImage(10, height);
-        image.setColor(Color.WHITE);
-        image.fill();
-        setImage(image);
-    }
-    public boolean getSide(){
-        return this.isLeft;
-    }
-    
-        public void setColor(Color color)
+    public void setColor(Color color)
     {
         GreenfootImage image = getImage();
         image.setColor(color);

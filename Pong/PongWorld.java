@@ -15,6 +15,7 @@ public class PongWorld extends World
 
 
 
+
     public PongWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -24,6 +25,13 @@ public class PongWorld extends World
         // Add menu (which contains the start button) to the world
         menu = new Menu(false);
         addObject(menu, getWidth() / 2, getHeight() / 2);
+        
+        leftPaddle = new Paddle(true);
+        rightPaddle = new Paddle(false);
+        
+         ball = new Ball(); 
+         
+
     }
     
     public void startGame()
@@ -32,13 +40,12 @@ public class PongWorld extends World
         
         
         // Add paddles to the world
-        leftPaddle = new Paddle(true);
-        rightPaddle = new Paddle(false);
+
         addObject(leftPaddle, 50, getHeight() / 2);
         addObject(rightPaddle, getWidth() - 50, getHeight() / 2);
         
         // Add ball to the world
-        ball = new Ball();            
+                  
         addObject(ball, getWidth() / 2, getHeight() / 2);
         
         // Left and right scores
@@ -104,13 +111,12 @@ public class PongWorld extends World
     
         private void addPowerUp()
     {
-        if (Greenfoot.getRandomNumber(100) < 10) // Adjust the probability as needed
-        {
+            if(powerupcount < 5){
             int margem = 60;
             int x = margem + Greenfoot.getRandomNumber(getWidth() - 2 * margem);
             int y = margem + Greenfoot.getRandomNumber(getHeight() - 2 * margem);
             int powerUpType = Greenfoot.getRandomNumber(3);
-
+            powerupcount += 1;
             switch (powerUpType) {
                 case 0:
                     addObject(new SpeedPowerUp(), x, y); // Speed increase
@@ -129,7 +135,7 @@ public class PongWorld extends World
     public void act()
     {
         if (isGameStarted) {
-            if (Greenfoot.getRandomNumber(1000) < 5) //probabilidade de aparecer powerup
+            if (Greenfoot.getRandomNumber(1000) < 10) //probabilidade de aparecer powerup
             {
                 addPowerUp();
             }
@@ -164,8 +170,14 @@ public class PongWorld extends World
     
         public void closeSettings()
     {
+        settingsMenu.removeButtonsAndLabels();
+
         removeObject(settingsMenu);
-        menu = new Menu(isGameStarted);
+        if(leftScore == null){
+            menu = new Menu(false);
+        }else{
+        menu = new Menu(true)
+        ;}
         addObject(menu, getWidth() / 2, getHeight() / 2);
     }
     
@@ -175,5 +187,9 @@ public class PongWorld extends World
         bg.scale(getWidth(), getHeight());
         setBackground(bg);
     }
+    
+ 
+    
+ 
 }
 

@@ -7,6 +7,7 @@ public class Menu extends Actor
     private ReturnButton returnButton;
     private boolean isPaused;
 
+
     public Menu(boolean isPaused)
     {
         this.isPaused = isPaused;
@@ -16,6 +17,7 @@ public class Menu extends Actor
             startButton = new StartButton();
         }
         settingsButton = new SettingsButton();
+
     }
 
     protected void addedToWorld(World world)
@@ -26,6 +28,7 @@ public class Menu extends Actor
             world.addObject(returnButton, world.getWidth() / 2, 30 );
         }
         world.addObject(settingsButton, world.getWidth() / 2, world.getHeight() / 2 + 30);
+
     }
     
         public void removeButtons()
@@ -36,5 +39,7 @@ public class Menu extends Actor
             getWorld().removeObject(returnButton);
         }
         getWorld().removeObject(settingsButton);
+ 
+
     }
 }

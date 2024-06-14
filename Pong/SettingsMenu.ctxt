@@ -6,4 +6,6 @@ comment2.params=world
 comment2.target=void\ addedToWorld(greenfoot.World)
 comment3.params=text\ x\ y
 comment3.target=void\ addLabel(java.lang.String,\ int,\ int)
-numComments=4
+comment4.params=
+comment4.target=void\ removeButtonsAndLabels()
+numComments=5
